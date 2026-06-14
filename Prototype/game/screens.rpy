@@ -292,8 +292,12 @@ screen navigation():
     vbox:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        if main_menu:
+            xalign 0.1
+            yalign 0.5
+        else:
+            xoffset 60
+            yalign 0.5
 
         spacing gui.navigation_spacing
 
@@ -309,7 +313,7 @@ screen navigation():
 
         textbutton _("Load") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("Options") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -342,7 +346,7 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
-
+    xalign 0.5
 
 ## Main Menu screen ############################################################
 ##
@@ -387,23 +391,32 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    #background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
+    xalign 0.07
+    xoffset 0.0
     xmaximum 1200
-    yalign 1.0
+    yalign 0.15
     yoffset -30
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
+    color "#FF0000"
 
 style main_menu_title:
     properties gui.text_properties("title")
+    color "#FFFFFF"   ## màu riêng cho tên game
+    size 100
+
+
 
 style main_menu_version:
     properties gui.text_properties("version")
+    color "#AAAAAA"   ## màu riêng cho số version
+    size 50
+
+
 
 
 ## Game Menu screen ############################################################
